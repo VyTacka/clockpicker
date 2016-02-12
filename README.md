@@ -135,6 +135,10 @@ gulp
 
 ## Change log
 
+0.0.9
+
+* Appends clockpicker on it's element's offset parent and not `body` (fixes a bug with clockpicker positioning inside Bootstrap modal when it has scrollbar).
+
 0.0.8
 
 * Correct parsing of hours in twelve hour mode
