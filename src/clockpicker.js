@@ -368,7 +368,7 @@
   ClockPicker.prototype.locate = function(){
     var element = this.element,
     popover = this.popover,
-    offset = element.offset(),
+    position = element.position(),
     width = element.outerWidth(),
     height = element.outerHeight(),
     placement = this.options.placement,
@@ -381,32 +381,32 @@
     // Place the popover
     switch (placement) {
       case 'bottom':
-        styles.top = offset.top + height;
+        styles.top = position.top + height;
         break;
       case 'right':
-        styles.left = offset.left + width;
+        styles.left = position.left + width;
         break;
       case 'top':
-        styles.top = offset.top - popover.outerHeight();
+        styles.top = position.top - popover.outerHeight();
         break;
       case 'left':
-        styles.left = offset.left - popover.outerWidth();
+        styles.left = position.left - popover.outerWidth();
         break;
     }
 
     // Align the popover arrow
     switch (align) {
       case 'left':
-        styles.left = offset.left;
+        styles.left = position.left;
         break;
       case 'right':
-        styles.left = offset.left + width - popover.outerWidth();
+        styles.left = position.left + width - popover.outerWidth();
         break;
       case 'top':
-        styles.top = offset.top;
+        styles.top = position.top;
         break;
       case 'bottom':
-        styles.top = offset.top + height - popover.outerHeight();
+        styles.top = position.top + height - popover.outerHeight();
         break;
     }
 
@@ -427,7 +427,7 @@
     // Initialize
     if (! this.isAppended) {
       // Append popover to body
-      $body = $(document.body).append(this.popover);
+      $body = self.element.offsetParent().append(this.popover);
 
       // Reset position when resize
       $win.on('resize.clockpicker' + this.id, function(){
